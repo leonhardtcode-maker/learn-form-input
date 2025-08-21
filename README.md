@@ -4,4 +4,4 @@ Submitted sign-up account will be shown in the console
 ## Sign-Up button has two purposes
 1. To show sign-up component
 2. If sign-up component is already shown, it will become a submit button for sign-up form
-2.1 Then the submitted account will be shown in the console
+   - Then the submitted account will be shown in the console
