@@ -48,10 +48,17 @@ defineExpose({ showSignUpAccount });
           name="password"
           id="password"
           v-model="SignUp.password"
-          class="forms-control"
+          :class="
+            isShowError && isShortPassword
+              ? 'forms-control-password-error'
+              : 'forms-control'
+          "
           @keydown="toggleShowError"
         />
-        <div v-if="isShowError && isShortPassword" class="password-error">
+        <div
+          v-if="isShowError && isShortPassword"
+          class="password-error-message"
+        >
           Password must be atleast 6 characters long
         </div>
       </div>
@@ -121,6 +128,15 @@ select {
 .forms-control:focus {
   border-bottom: 2px solid #007bff;
 }
+.forms-control-password-error {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid red;
+  outline: none;
+  background: transparent;
+  font-size: clamp(0.6rem, 0.9vw, 1rem);
+  transition: border-color 0.2s ease;
+}
 .terms-form {
   margin-top: 0.5rem;
   display: flex;
@@ -132,7 +148,7 @@ select {
   max-width: 2rem;
   margin-top: 0.4vw;
 }
-.password-error {
+.password-error-message {
   line-height: 1;
   font-size: clamp(0.4rem, 0.7vw, 1rem);
   color: red;
